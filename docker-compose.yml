@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  quill2slack:
+    container_name: quill2slack
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - 4201:4201
