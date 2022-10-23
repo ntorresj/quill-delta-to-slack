@@ -1,10 +1,10 @@
-const isObject = require('lodash/isObject');
-const isArray = require('lodash/isArray');
-const trimEnd = require('lodash/trimEnd');
-const defaultConverters = require('./fromDelta.converters');
 const Node = require('./utils/Node');
+const defaultConverters = require('./fromDelta.converters');
+const isArray = require('lodash/isArray');
+const isObject = require('lodash/isObject');
+const trimEnd = require('lodash/trimEnd');
 
-exports = module.exports = function(ops, converters = defaultConverters) {
+exports = module.exports = function (ops, converters = defaultConverters) {
   return trimEnd(convert(ops, converters).render()) + '\n';
 };
 

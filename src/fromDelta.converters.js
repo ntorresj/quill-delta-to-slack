@@ -1,11 +1,7 @@
 const Node = require('./utils/Node');
-const { encodeLink } = require('./utils/URL');
 
 module.exports = {
   embed: {
-    image: function(src) {
-      this.append('![](' + encodeLink(src) + ')');
-    },
     // Not a default Quill feature, converts custom divider embed blot added when
     // creating quill editor instance.
     // See https://quilljs.com/guides/cloning-medium-with-parchment/#dividers
@@ -15,29 +11,26 @@ module.exports = {
   },
 
   inline: {
-    italic: function() {
+    italic: function () {
       return ['_', '_'];
     },
-    bold: function() {
-      return ['**', '**'];
+    bold: function () {
+      return ['*', '*'];
     },
-    link: function(url) {
-      return ['[', '](' + url + ')'];
+    strike: function () {
+      return ['~', '~'];
     },
   },
 
   block: {
-    'header': function({header}) {
-      this.open = '#'.repeat(header) + ' ' + this.open;
-    },
-    blockquote: function() {
+    blockquote: function () {
       this.open = '> ' + this.open;
     },
     'list': {
-      group: function() {
+      group: function () {
         return new Node(['', '\n']);
       },
-      line: function(attrs, group) {
+      line: function (attrs, group) {
         if (attrs.list === 'bullet') {
           this.open = '- ' + this.open;
         } else if (attrs.list === "checked") {
