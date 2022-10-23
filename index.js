@@ -1,3 +1,3 @@
 module.exports = {
-  deltaToMarkdown: require("./src/fromDelta")
+  deltaToSlack: require("./src/fromDelta")
 };
