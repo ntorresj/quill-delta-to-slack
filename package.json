@@ -1,6 +1,6 @@
 {
   "name": "quill-delta-to-slack",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "public": true,
   "description": "Convert from Quill Delta to Slack",
   "main": "index.js",
