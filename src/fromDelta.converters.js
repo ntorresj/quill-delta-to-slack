@@ -32,7 +32,7 @@ module.exports = {
       },
       line: function (attrs, group) {
         if (attrs.list === 'bullet') {
-          this.open = '- ' + this.open;
+          this.open = '- '.padStart((attrs.indent || 0) + 2) + this.open;
         } else if (attrs.list === "checked") {
           this.open = '- [x] ' + this.open;
         } else if (attrs.list === "unchecked") {

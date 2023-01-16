@@ -139,3 +139,66 @@ test('renders a separator block', function () {
     ])
   ).toEqual('Before' + '\n' + '\n' + '---' + '\n' + 'After' + '\n')
 });
+
+test('renders simple bullet', function () {
+  expect(
+    render([
+      {
+        insert: 'Hello',
+      },
+      {
+        attributes: { list: "bullet" },
+        insert: "\n",
+      },
+      {
+        insert: 'World',
+      },
+      {
+        attributes: { list: "bullet" },
+        insert: "\n",
+      },
+    ])
+  ).toEqual('- Hello\n- World\n')
+});
+
+test('renders indent 1 bullet', function () {
+  expect(
+    render([
+      {
+        insert: 'Hello',
+      },
+      {
+        attributes: { list: "bullet" },
+        insert: "\n",
+      },
+      {
+        insert: 'World',
+      },
+      {
+        attributes: { indent: 1, list: "bullet" },
+        insert: "\n",
+      },
+    ])
+  ).toEqual('- Hello\n - World\n')
+});
+
+test('renders indent 4 bullets', function () {
+  expect(
+    render([
+      {
+        insert: 'Hello',
+      },
+      {
+        attributes: { list: "bullet" },
+        insert: "\n",
+      },
+      {
+        insert: 'World',
+      },
+      {
+        attributes: { indent: 4, list: "bullet" },
+        insert: "\n",
+      },
+    ])
+  ).toEqual('- Hello\n    - World\n')
+});
