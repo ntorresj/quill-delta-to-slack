@@ -179,7 +179,7 @@ test('renders indent 1 bullet', function () {
         insert: "\n",
       },
     ])
-  ).toEqual('- Hello\n - World\n')
+  ).toEqual('- Hello\n  - World\n')
 });
 
 test('renders indent 4 bullets', function () {
@@ -200,5 +200,5 @@ test('renders indent 4 bullets', function () {
         insert: "\n",
       },
     ])
-  ).toEqual('- Hello\n    - World\n')
+  ).toEqual('- Hello\n     - World\n')
 });
