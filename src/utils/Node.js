@@ -47,6 +47,47 @@ class Node {
   parent() {
     return this._parent
   }
+
+  intToRoman(num, upperCase = true) {
+    const map = {
+      M: 1000,
+      CM: 900,
+      D: 500,
+      CD: 400,
+      C: 100,
+      XC: 90,
+      L: 50,
+      XL: 40,
+      X: 10,
+      IX: 9,
+      V: 5,
+      IV: 4,
+      I: 1,
+    };
+    let result = '';
+
+    for (let key in map) {
+      result += key.repeat(Math.floor(num / map[key]));
+      num %= map[key];
+    }
+
+    if (upperCase) {
+      return result;
+    }
+
+    return result.toLowerCase();
+  };
+
+  intToLetter(num, upperCase = true) {
+    const alpha = Array.from(Array(26)).map((_, i) => i + 97);
+    const alphabet = alpha.map((x) => String.fromCharCode(x));
+
+    if (upperCase) {
+      return alphabet[num - 1];
+    }
+
+    return alphabet[num - 1].toLowerCase();
+  }
 }
 
 module.exports = Node

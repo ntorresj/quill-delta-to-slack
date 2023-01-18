@@ -202,3 +202,122 @@ test('renders indent 4 bullets', function () {
     ])
   ).toEqual('• Hello\n				• World\n')
 });
+
+test('renders indent 1 ordered', function () {
+  expect(
+    render([
+      {
+        insert: 'Hello',
+      },
+      {
+        attributes: { list: "ordered" },
+        insert: "\n",
+      },
+      {
+        insert: 'World',
+      },
+      {
+        attributes: { indent: 1, list: "ordered" },
+        insert: "\n",
+      },
+      {
+        insert: 'Bye',
+      },
+      {
+        attributes: { list: "ordered" },
+        insert: "\n",
+      },
+    ])
+  ).toEqual('1. Hello\n	a. World\n2. Bye\n')
+});
+
+test('renders indent 2 ordered', function () {
+  expect(
+    render([
+      {
+        insert: 'Hello',
+      },
+      {
+        attributes: { list: "ordered" },
+        insert: "\n",
+      },
+      {
+        insert: 'Amazing',
+      },
+      {
+        attributes: { indent: 1, list: "ordered" },
+        insert: "\n",
+      },
+      {
+        insert: 'World',
+      },
+      {
+        attributes: { indent: 1, list: "ordered" },
+        insert: "\n",
+      },
+      {
+        insert: 'Bye',
+      },
+      {
+        attributes: { list: "ordered" },
+        insert: "\n",
+      },
+    ])
+  ).toEqual('1. Hello\n	a. Amazing\n	b. World\n2. Bye\n')
+});
+
+test('renders indent 3 ordered', function () {
+  expect(
+    render([
+      {
+        insert: 'Hello',
+      },
+      {
+        attributes: { list: "ordered" },
+        insert: "\n",
+      },
+      {
+        insert: 'Amazing',
+      },
+      {
+        attributes: { indent: 1, list: "ordered" },
+        insert: "\n",
+      },
+      {
+        insert: 'New',
+      },
+      {
+        attributes: { indent: 1, list: "ordered" },
+        insert: "\n",
+      },
+      {
+        insert: 'Big',
+      },
+      {
+        attributes: { indent: 2, list: "ordered" },
+        insert: "\n",
+      },
+      {
+        insert: 'World',
+      },
+      {
+        attributes: { indent: 3, list: "ordered" },
+        insert: "\n",
+      },
+      {
+        insert: 'Big2',
+      },
+      {
+        attributes: { indent: 2, list: "ordered" },
+        insert: "\n",
+      },
+      {
+        insert: 'Bye',
+      },
+      {
+        attributes: { list: "ordered" },
+        insert: "\n",
+      },
+    ])
+  ).toEqual('1. Hello\n	a. Amazing\n	b. New\n		i. Big\n			1. World\n		ii. Big2\n2. Bye\n')
+});
